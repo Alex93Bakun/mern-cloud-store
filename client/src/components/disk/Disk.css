@@ -1,0 +1,69 @@
+.disk {
+  margin-top: 20px;
+  height: calc(100vh - 50px - 40px);
+}
+.disk__btns {
+  display: flex;
+}
+.disk__create {
+  margin-left: 10px;
+}
+.disk__upload-input {
+  display: none;
+}
+.disk__upload-label {
+  border: 2px dashed #566885;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.drop-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 50px - 40px);
+  margin: 20px;
+  border: 2px dashed #566885;
+  font-size: 40px;
+}
+.popup {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup__content {
+  width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+.popup__create {
+  align-self: flex-end;
+}
+.popup__close {
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+.popup__header {
+  display: flex;
+  justify-content: space-between;
+}
+.popup input {
+  margin: 20px 0;
+}
+.popup button {
+  cursor: pointer;
+}
+/*# sourceMappingURL=Disk.css.map */

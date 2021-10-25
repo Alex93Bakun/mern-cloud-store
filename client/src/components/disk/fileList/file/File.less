@@ -1,0 +1,60 @@
+@import "../../../../utils/Colors";
+
+.file {
+  margin: 10px 0;
+  border-bottom: 2px solid @font-color;
+  display: grid;
+  grid-template-columns: 1fr 4fr repeat(4, 1fr);
+  align-items: center;
+
+  &:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+
+  &__img {
+    justify-self: center;
+
+  }
+
+  &__date {
+    grid-column-start: 5;
+    justify-self: center;
+  }
+
+  &__size {
+    grid-column-start: 6;
+    justify-self: center;
+  }
+
+  &__btn {
+    display: none;
+    width: 58px;
+    height: 34px;
+    border: 1px solid @font-color;
+    border-radius: 37px;
+    background-color: transparent;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    cursor: pointer;
+  }
+
+  &:hover &__date {
+    grid-column-start: 3;
+  }
+
+  &:hover &__size {
+    grid-column-start: 4;
+  }
+
+  &:hover &__download {
+    grid-column-start: 5;
+    display: flex;
+  }
+
+  &:hover &__delete {
+    grid-column-start: 6;
+    display: flex;
+  }
+}
