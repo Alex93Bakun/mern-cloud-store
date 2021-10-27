@@ -4,25 +4,34 @@ const config = require('config');
 const fileUpload = require('express-fileupload');
 const authRouter = require('./routes/auth.routes');
 const fileRouter = require('./routes/file.routes');
-const cors = require('./middleware/cors.middleware');
+const corsMiddleware = require('./middleware/cors.middleware');
+const filePathMiddleware = require('./middleware/filePath.middleware');
+const path = require('path');
 
 const app = express();
-const PORT = config.get('serverPort') || 5000;
+const PORT = process.env.PORT || config.get('serverPort');
 
 app.use(fileUpload({}));
-app.use(cors);
+app.use(corsMiddleware);
+app.use(filePathMiddleware(path.resolve(__dirname, 'files')));
 app.use(express.json());
+app.use(express.static('static'));
 app.use('/api/auth', authRouter);
 app.use('/api/files', fileRouter);
 
 const start = async () => {
     try {
-        await mongoose.connect(config.get('dbUrl'));
+        await mongoose.connect(config.get('dbUrl'), {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
 
         app.listen(PORT, () => {
-            console.log(`Server started on port ${PORT}`);
+            console.log('Server started on port ', PORT);
         });
-    } catch (e) {}
+    } catch (e) {
+        console.log(e);
+    }
 };
 
 start();

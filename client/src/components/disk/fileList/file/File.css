@@ -46,4 +46,41 @@
   grid-column-start: 6;
   display: flex;
 }
+.file-plate {
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+.file-plate__name {
+  display: inline;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+.file-plate__img {
+  width: 100px;
+  height: 100px;
+}
+.file-plate__btns {
+  display: none;
+  width: 100%;
+}
+.file-plate__btns button {
+  width: 58px;
+  height: 34px;
+  border: 1px solid #566885;
+  border-radius: 37px;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  cursor: pointer;
+}
+.file-plate:hover .file-plate__btns {
+  display: flex;
+  justify-content: space-around;
+}
 /*# sourceMappingURL=File.css.map */

@@ -7,17 +7,24 @@ import FileList from './fileList/FileList';
 
 import './Disk.css';
 import Popup from './Popup';
-import { setCurrentDir, setPopupDisplay } from '../../reducers/fileReducer';
+import {
+    setCurrentDir,
+    setPopupDisplay,
+    setView,
+} from '../../reducers/fileReducer';
+import Uploader from './uploader/Uploader';
 
 const Disk = () => {
     const dispatch = useDispatch();
     const currentDir = useSelector((state) => state.file.currentDir);
     const dirStack = useSelector((state) => state.file.dirStack);
+    const loader = useSelector((state) => state.app.loader);
     const [dragEnter, setDragEnter] = useState(false);
+    const [sort, setSort] = useState('type');
 
     useEffect(() => {
-        dispatch(getFiles(currentDir));
-    }, [currentDir]);
+        dispatch(getFiles(currentDir, sort));
+    }, [currentDir, sort]);
 
     const showPopupHandler = () => {
         dispatch(setPopupDisplay(`flex`));
@@ -52,6 +59,14 @@ const Disk = () => {
         files.forEach((file) => dispatch(uploadFile(file, currentDir)));
         setDragEnter(false);
     };
+
+    if (loader) {
+        return (
+            <div className="loader">
+                <div className="lds-dual-ring"></div>
+            </div>
+        );
+    }
 
     return !dragEnter ? (
         <div
@@ -88,9 +103,27 @@ const Disk = () => {
                         onChange={(event) => fileUploadHandler(event)}
                     />
                 </div>
+                <select
+                    value={sort}
+                    onChange={(e) => setSort(e.target.value)}
+                    className="disk__select"
+                >
+                    <option value="name">По имени</option>
+                    <option value="type">По типу</option>
+                    <option value="date">По дате</option>
+                </select>
+                <button
+                    className="disk__plate"
+                    onClick={() => dispatch(setView('plate'))}
+                />
+                <button
+                    className="disk__list"
+                    onClick={() => dispatch(setView('list'))}
+                />
             </div>
             <FileList />
             <Popup />
+            <Uploader />
         </div>
     ) : (
         <div

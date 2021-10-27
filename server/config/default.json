@@ -2,5 +2,6 @@
   "serverPort": 5000,
   "dbUrl": "mongodb+srv://root:root@cloud.msbuz.mongodb.net/cloud?retryWrites=true&w=majority",
   "secretKey": "mern-secret-key",
-  "filePath": "F:\\WORK\\tutorials\\mern-cloud-store\\server\\files"
+  "filePath": "F:\\WORK\\tutorials\\mern-cloud-store\\server\\files",
+  "staticPath": "F:\\WORK\\tutorials\\mern-cloud-store\\server\\static"
 }
